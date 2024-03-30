@@ -2,11 +2,11 @@ import mongoose from "mongoose";
 
 const dreamSchema = new mongoose.Schema(
   {
-    usersText: {
+    dream: {
       type: String,
       required: true,
     },
-    generatedText: {
+    generatedDream: {
       type: String,
     },
   },
