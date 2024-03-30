@@ -12,7 +12,7 @@ const generatedDreams = async (req, res) => {
         .json({ error: "Please describe you dream, it could not be empty." });
     }
 
-    // ---------------      Eden AI ---------------------------
+    // ---------------      Eden AI    ---------------------------
     const apiKey = process.env.EDENAI_API_KEY;
 
     if (!apiKey) {
@@ -39,7 +39,6 @@ const generatedDreams = async (req, res) => {
     axios
       .request(options)
       .then((response) => {
-        console.log(response.data);
 
         const saveDream = new dreamModel({
           usersText,
