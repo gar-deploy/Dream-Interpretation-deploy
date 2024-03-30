@@ -6,9 +6,9 @@ const generatedDreams = async (req, res) => {
     const { dream } = req.body;
 
     if (!dream) {
-      return res
-        .status(400)
-        .json({ error: "Please describe you dream, it could not be empty." });
+      return res.status(400).json({
+        error:
+        "Please describe your dream, it might be left empty or typed in the correct key. Instead, write this way - " + "{"+"dream"+ ":"  + "Enter your dream"+ "}"});
     }
 
     // ---------------      Eden AI    ---------------------------
@@ -38,7 +38,6 @@ const generatedDreams = async (req, res) => {
     axios
       .request(options)
       .then((response) => {
-
         const saveDream = new dreamModel({
           dream,
           generatedDream: response.data.openai.generated_text,
