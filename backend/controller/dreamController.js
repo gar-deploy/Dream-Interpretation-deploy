@@ -8,7 +8,7 @@ const generatedDreams = async (req, res) => {
     if (!dream) {
       return res.status(400).json({
         error:
-        "Please describe your dream, it might be left empty or typed in the correct key. Instead, write this way - " + "{"+"dream"+ ":"  + "Enter your dream"+ "}"});
+        "Please describe your dream, it might be left empty or typed in the correct key. Instead, write this way - " + "{"+ "'"+ "dream"+ "'"+ ":"  + "'"+"Enter your dream"+"'"+ "}."});
     }
 
     // ---------------      Eden AI    ---------------------------
