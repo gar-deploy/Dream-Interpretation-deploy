@@ -4,7 +4,6 @@ import dreamModel from "../model/dreamModel.js";
 const generatedDreams = async (req, res) => {
   try {
     const { usersText } = req.body;
-    console.log(usersText);
 
     if (!usersText) {
       return res
@@ -29,7 +28,7 @@ const generatedDreams = async (req, res) => {
         providers: "openai",
         text: usersText,
         chatbot_global_action:
-          "analyse the text and convey user's feeling which he saw in dream",
+          "Analyse the text and convey user's feeling which he saw in dream. And it should feel like you are talking to the user.",
         temperature: 0.0,
         max_tokens: 150,
         fallback_providers: "",
