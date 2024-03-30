@@ -3,9 +3,9 @@ import dreamModel from "../model/dreamModel.js";
 
 const generatedDreams = async (req, res) => {
   try {
-    const { usersText } = req.body;
+    const { dream } = req.body;
 
-    if (!usersText) {
+    if (!dream) {
       return res
         .status(400)
         .json({ error: "Please describe you dream, it could not be empty." });
@@ -26,7 +26,7 @@ const generatedDreams = async (req, res) => {
       },
       data: {
         providers: "openai",
-        text: usersText,
+        text: dream,
         chatbot_global_action:
           "Analyse the text and convey user's feeling which he saw in dream. And it should feel like you are talking to the user.",
         temperature: 0.0,
@@ -40,8 +40,8 @@ const generatedDreams = async (req, res) => {
       .then((response) => {
 
         const saveDream = new dreamModel({
-          usersText,
-          generatedText: response.data.openai.generated_text,
+          dream,
+          generatedDream: response.data.openai.generated_text,
         });
 
         saveDream.save();
